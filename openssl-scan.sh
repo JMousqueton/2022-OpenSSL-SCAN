@@ -12,7 +12,6 @@
 # set the directory to search for OpenSSL libraries in (default: /)
 search_directory=/
 
-Verbose="false"
 # Reset
 Color_Off='\033[0m'       # Text Reset
 
@@ -27,35 +26,24 @@ Yellow='\033[0;33m'       # Yellow
 ############################################################
 Openssl_check ()
 {
-  echoerr "Checking for binutils ..."
+  echo "Checking for binutils ..."
   if command -v strings > /dev/null; then
-    echoerr "Detected strings..."
+    echo "Detected strings..."
   else
     if [[ $OSTYPE == 'darwin'* ]]; then 
         echoerr "MacOS : you should check manually if openssl is installed" 
         exit 3
     else
-      echoerr "Installing openssl..."
+      echo "Installing openssl..."
       sudo apt-get install -q -y openssl
       if [ "$?" -ne "0" ]; then
-        echoerr "Unable to install openssl ! Your base system has a problem; please check your default OS's package repositories because openssl should work."
-        echoerr "Repository installation aborted."
+        echoe "Unable to install openssl ! Your base system has a problem; please check your default OS's package repositories because openssl should work."
+        echoe "Repository installation aborted."
         exit 3
       fi
     fi
   fi
 }
-
-############################################################
-# Error Message                                            #
-############################################################
-echoerr() 
-{ 
-  if [ "$Verbose" == "true" ]; then   
-    echo "$@" 1>&2; 
-  fi 
-}
-
 
 ############################################################
 # Help                                                     #
@@ -65,10 +53,9 @@ Help()
    # Display Help
    echo "Check OpenSSL Version."
    echo
-   echo "Syntax: openssl-scan.sh [-o|v|h]"
+   echo "Syntax: openssl-scan.sh [-o|-h]"
    echo "options:"
-   echo -e "-o     Only vulnerable version."
-   echo -e "-v     Verbose error message on stderr"
+   echo -e "-o     Only vulnerable versions."
    echo -e "-h     Print this Help."
    echo
 }
@@ -78,12 +65,12 @@ Help()
 ############################################################
 regex="^OpenSSL\s*[0-9].[0-9].[0-9]"
 # Get the options
-while getopts ":d:hD:p:v" option; do
+while getopts ":h:o" option; do
    case $option in
       h) # display Help
          Help
          exit;;
-      o) # Domain name
+      o) # only vulnerable
          regex="^OpenSSL\s*3.0.[0-6]";;
       v) # Verbose mode 
          Verbose="true";;
