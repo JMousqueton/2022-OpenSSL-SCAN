@@ -9,10 +9,9 @@ Scan for OpenSSL 3.x on Linux (Windows coming soon)
 ```❯ ./openssl-scan.sh -h
 Check OpenSSL Version.
 
-Syntax: openssl-scan.sh [-o|v|h]
+Syntax: openssl-scan.sh [-o|h]
 options:
--o     Only vulnerable version.
--v     Verbose error message on stderr
+-o     Only vulnerable versions.
 -h     Print this Help.
 
 ```
