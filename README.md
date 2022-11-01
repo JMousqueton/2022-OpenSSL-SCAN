@@ -1,7 +1,7 @@
 
 # OpenSSL 3.x scanner 
 
-Scan for OpenSSL 3.x on Linux (Windows coming soon)
+Scan for OpenSSL 3.x on Linux and linux based on [MalwareTech Tools](https://github.com/MalwareTech/SpookySSLTools)
 
 
 ## Usage for Linux
