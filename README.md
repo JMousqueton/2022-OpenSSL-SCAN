@@ -24,7 +24,7 @@ options:
 
 ## Roadmap
 
-- ~~~Windows Support ~~~   
+- ~~Windows Support~~
 
 ## License
 
