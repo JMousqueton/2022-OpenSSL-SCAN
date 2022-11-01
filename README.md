@@ -4,7 +4,7 @@
 Scan for OpenSSL 3.x on Linux (Windows coming soon)
 
 
-## Usage/Examples
+## Usage for Linux
 
 ```❯ ./openssl-scan.sh -h
 Check OpenSSL Version.
@@ -24,7 +24,7 @@ options:
 
 ## Roadmap
 
-- Windows Support 
+- ~~~Windows Support ~~~   
 
 ## License
 
